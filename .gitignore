@@ -1,0 +1,14 @@
+# GNU Emacs
+
+*~
+\#*
+ChangeLog
+
+# Composer
+/vendor/
+composer.lock
+
+# Misc
+
+/tmp
+/test.php

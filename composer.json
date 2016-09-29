@@ -1,0 +1,8 @@
+{
+    "name": "hab/oai-repository",
+    "autoload": {
+        "psr-0": {
+            "HAB": "src/"
+        }
+    }
+}
