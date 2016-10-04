@@ -60,6 +60,7 @@ class Controller
         } else {
             try {
                 $responseBody = $this->delegate($params);
+                $response->setResponseBody($responseBody);
             } catch (ProtocolError $error) {
                 $response->addProtocolError($error);
             }
