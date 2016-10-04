@@ -62,6 +62,13 @@ class Response
     private $responseDate;
 
     /**
+     * Response body.
+     *
+     * @var ResponseBodyInterface
+     */
+    private $responseBody;
+
+    /**
      * Errors.
      *
      * @var ProtocolError[]
