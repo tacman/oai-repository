@@ -135,7 +135,7 @@ class Writer implements Model\VisitorInterface
      */
     public function visitMetadataFormat (Model\MetadataFormat $metadataFormat)
     {
-        $this->start('set');
+        $this->start('metadataFormat');
         $this->element('metadataPrefix', $metadataFormat->getPrefix());
         $this->element('schema', $metadataFormat->getSchemaUri());
         $this->element('metadataNamespace', $metadataFormat->getNamespaceUri());
