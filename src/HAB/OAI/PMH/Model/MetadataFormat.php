@@ -53,6 +53,13 @@ class MetadataFormat implements VisitableInterface
      */
     private $prefix;
 
+    public function __construct ($prefix, $namespaceUri, $schemaUri)
+    {
+        $this->prefix = $prefix;
+        $this->namespaceUri = $namespaceUri;
+        $this->schemaUri = $schemaUri;
+    }
+
     /**
      * Return prefix.
      *
