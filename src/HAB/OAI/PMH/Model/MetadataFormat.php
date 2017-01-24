@@ -30,7 +30,7 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class MetadataFormat
+class MetadataFormat implements VisitableInterface
 {
     /**
      * Namespace Uri.
