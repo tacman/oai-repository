@@ -168,6 +168,26 @@ class Writer implements Model\VisitorInterface
         $this->xml($entity->toXML());
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function visitIdentity (Model\Identity $identity)
+    {
+        $this->start('Identify');
+        foreach ($identity as $name => $values) {
+            foreach ($values as $value) {
+                if ($value instanceof Model\VisitableInterface) {
+                    $this->start($name);
+                    $value->accept($this);
+                    $this->end();
+                } else {
+                    $this->element($name, $value);
+                }
+            }
+        }
+        $this->end();
+    }
+
     ///
 
     private function start ($name)

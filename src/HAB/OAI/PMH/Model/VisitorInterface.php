@@ -88,4 +88,12 @@ interface VisitorInterface
      */
     public function visitXmlSerializable (XmlSerializableInterface $entity);
 
+    /**
+     * Visit body of a Identify response.
+     *
+     * @param  Identity $identity
+     * @return void
+     */
+    public function visitIdentity (Identity $entity);
+
 }
