@@ -173,7 +173,6 @@ class Writer implements Model\VisitorInterface
      */
     public function visitIdentity (Model\Identity $identity)
     {
-        $this->start('Identify');
         foreach ($identity as $name => $values) {
             foreach ($values as $value) {
                 if ($value instanceof Model\VisitableInterface) {
@@ -185,7 +184,6 @@ class Writer implements Model\VisitorInterface
                 }
             }
         }
-        $this->end();
     }
 
     ///
