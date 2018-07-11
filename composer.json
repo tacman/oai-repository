@@ -1,5 +1,7 @@
 {
     "name": "hab/oai-repository",
+    "description": "An OAI-PMH repository implementation",
+    "license": "GPL-3.0-or-later",
     "autoload": {
         "psr-0": {
             "HAB": "src/"
