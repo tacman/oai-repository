@@ -12,3 +12,11 @@ project being carried out by the Herzog August Bibliothek (HAB) in
 Wolfenbüttel and the Herzog Anton Ulrich Museum (HAUM) in Braunschweig,
 Germany. It powers the project portal's own
 [OAI-PMH web service](http://www.virtuelles-kupferstichkabinett.de/service/oai/?verb=Identify).
+
+## Installation
+
+You can install this package via composer
+
+```
+composer require hab/oai-repository
+```
