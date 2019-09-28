@@ -30,20 +30,20 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-interface SetInterface
+interface SetInterface extends VisitableInterface
 {
     /**
      * Return spec.
      *
      * @return string
      */
-    public function getSpec ();
+    public function getSpec () : string;
 
     /**
      * Return name.
      *
      * @return string
      */
-    public function getName ();
+    public function getName () : string;
 
 }

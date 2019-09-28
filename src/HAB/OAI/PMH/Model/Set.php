@@ -30,7 +30,7 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class Set implements SetInterface, VisitableInterface
+class Set implements SetInterface
 {
     /**
      * Spec.
@@ -57,7 +57,7 @@ class Set implements SetInterface, VisitableInterface
      *
      * @return string
      */
-    public function getSpec ()
+    public function getSpec () : string
     {
         return $this->spec;
     }
@@ -67,7 +67,7 @@ class Set implements SetInterface, VisitableInterface
      *
      * @return string
      */
-    public function getName ()
+    public function getName () : string
     {
         return $this->name;
     }
@@ -75,7 +75,7 @@ class Set implements SetInterface, VisitableInterface
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         $visitor->visitSet($this);
     }

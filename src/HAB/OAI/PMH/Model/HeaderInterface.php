@@ -30,34 +30,34 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-interface HeaderInterface
+interface HeaderInterface extends VisitableInterface
 {
     /**
      * Return identifier.
      *
      * @return string
      */
-    public function getIdentifier ();
+    public function getIdentifier () : string;
 
     /**
      * Return datestamp.
      *
      * @return UtcDateTime
      */
-    public function getDatestamp ();
+    public function getDatestamp () : UtcDateTime;
 
     /**
      * Return specs.
      *
      * @return string[]
      */
-    public function getSpecs ();
+    public function getSpecs () : iterable;
 
     /**
      * Return true if the record is deleted.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isdeleted ();
+    public function isdeleted () : bool;
 
 }

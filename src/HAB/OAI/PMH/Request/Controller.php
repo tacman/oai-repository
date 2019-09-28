@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -25,6 +25,7 @@ namespace HAB\OAI\PMH\Request;
 
 use Exception;
 
+use HAB\OAI\PMH\Model\ResponseBodyInterface;
 use HAB\OAI\PMH\Repository\RepositoryInterface;
 use HAB\OAI\PMH\ProtocolError\ProtocolError;
 use HAB\OAI\PMH\Response\Response;
@@ -33,7 +34,7 @@ use HAB\OAI\PMH\Response\Response;
  * OAI repository controller.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class Controller
@@ -50,7 +51,7 @@ class Controller
         $this->repository = $repository;
     }
 
-    public function handle ($baseUrl, Parameters $params)
+    public function handle ($baseUrl, Parameters $params) : Response
     {
         $response = new Response($baseUrl, $params);
         if ($errors = $this->validate($params)) {
@@ -74,7 +75,7 @@ class Controller
      * @param  Parameters $params
      * @return ProtocolError[]
      */
-    private function validate (Parameters $params)
+    private function validate (Parameters $params) : iterable
     {
         $validator = new Validator();
         $validator->validate($params);
@@ -89,7 +90,7 @@ class Controller
      * @param  Parameters $p
      * @return ResponseBodyInterface
      */
-    private function delegate (Parameters $p)
+    private function delegate (Parameters $p) : ResponseBodyInterface
     {
         if ($p['resumptionToken']) {
             return $this->repository->resume($p['verb'], $p['resumptionToken']);

@@ -30,7 +30,7 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class MetadataFormat implements MetadataFormatInterface, VisitableInterface
+class MetadataFormat implements MetadataFormatInterface
 {
     /**
      * Namespace Uri.
@@ -65,7 +65,7 @@ class MetadataFormat implements MetadataFormatInterface, VisitableInterface
      *
      * @return string
      */
-    public function getPrefix ()
+    public function getPrefix () : string
     {
         return $this->prefix;
     }
@@ -75,7 +75,7 @@ class MetadataFormat implements MetadataFormatInterface, VisitableInterface
      *
      * @return string
      */
-    public function getSchemaUri ()
+    public function getSchemaUri () : string
     {
         return $this->schemaUri;
     }
@@ -85,7 +85,7 @@ class MetadataFormat implements MetadataFormatInterface, VisitableInterface
      *
      * @return string
      */
-    public function getNamespaceUri ()
+    public function getNamespaceUri () : string
     {
         return $this->namespaceUri;
     }
@@ -93,7 +93,7 @@ class MetadataFormat implements MetadataFormatInterface, VisitableInterface
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         $visitor->visitMetadataFormat($this);
     }

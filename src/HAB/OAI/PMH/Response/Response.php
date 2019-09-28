@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -35,7 +35,7 @@ use HAB\OAI\PMH\ProtocolError\ProtocolError;
  * OAI-PMH 2.0 response.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class Response
@@ -89,7 +89,7 @@ class Response
      *
      * @return string
      */
-    public function getResponsedate ()
+    public function getResponsedate () : string
     {
         return (string)$this->responseDate;
     }
@@ -99,7 +99,7 @@ class Response
      *
      * @return Parameters|null
      */
-    public function getParameters ()
+    public function getParameters () : ?Parameters
     {
         return $this->parameters;
     }
@@ -109,7 +109,7 @@ class Response
      *
      * @return string
      */
-    public function getBaseurl ()
+    public function getBaseurl () : string
     {
         return $this->baseUrl;
     }
@@ -120,7 +120,7 @@ class Response
      * @param  ProtocolError $error
      * @return void
      */
-    public function addProtocolError (ProtocolError $error)
+    public function addProtocolError (ProtocolError $error) : void
     {
         if ($error instanceof BadVerb or $error instanceof BadArgument) {
             $this->parameters = null;
@@ -133,7 +133,7 @@ class Response
      *
      * @return ProtocolError[]
      */
-    public function getErrors ()
+    public function getErrors () : iterable
     {
         return $this->errors;
     }
@@ -143,7 +143,7 @@ class Response
      *
      * @return string
      */
-    public function getVerb ()
+    public function getVerb () : string
     {
         return $this->parameters['verb'];
     }
@@ -151,9 +151,9 @@ class Response
     /**
      * Return response body.
      *
-     * @return ResponseBodeInterface
+     * @return ResponseBodyInterface|null
      */
-    public function getResponsebody ()
+    public function getResponsebody () : ?ResponseBodyInterface
     {
         return $this->responseBody;
     }
@@ -161,10 +161,10 @@ class Response
     /**
      * Set response body.
      *
-     * @param  ResponseBody $responseBody
-     * @return 
+     * @param  ResponseBodyInterface $responseBody
+     * @return void
      */
-    public function setResponseBody (ResponseBodyInterface $responseBody)
+    public function setResponseBody (ResponseBodyInterface $responseBody) : void
     {
         $this->responseBody = $responseBody;
     }

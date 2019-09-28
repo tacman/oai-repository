@@ -30,7 +30,7 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class Header implements HeaderInterface, VisitableInterface
+class Header implements HeaderInterface
 {
 
     /**
@@ -78,7 +78,7 @@ class Header implements HeaderInterface, VisitableInterface
      *
      * @return string
      */
-    public function getIdentifier ()
+    public function getIdentifier () : string
     {
         return $this->identifier;
     }
@@ -88,7 +88,7 @@ class Header implements HeaderInterface, VisitableInterface
      *
      * @return UtcDateTime
      */
-    public function getDatestamp ()
+    public function getDatestamp () : UtcDateTime
     {
         return $this->datestamp;
     }
@@ -98,7 +98,7 @@ class Header implements HeaderInterface, VisitableInterface
      *
      * @return string[]
      */
-    public function getSpecs ()
+    public function getSpecs () : iterable
     {
         return $this->specs;
     }
@@ -106,9 +106,9 @@ class Header implements HeaderInterface, VisitableInterface
     /**
      * Return true if the record is deleted.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isdeleted ()
+    public function isdeleted () : bool
     {
         return $this->isDeleted;
     }
@@ -116,7 +116,7 @@ class Header implements HeaderInterface, VisitableInterface
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         $visitor->visitHeader($this);
     }

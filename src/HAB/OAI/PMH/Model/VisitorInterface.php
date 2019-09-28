@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -27,7 +27,7 @@ namespace HAB\OAI\PMH\Model;
  * Interface of a model entity visitor.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 interface VisitorInterface
@@ -35,42 +35,42 @@ interface VisitorInterface
     /**
      * Visit a header entity.
      *
-     * @param  Header $header
+     * @param  HeaderInterface $header
      * @return void
      */
-    public function visitHeader (Header $header);
+    public function visitHeader (HeaderInterface $header) : void;
 
     /**
      * Visit a record entity.
      *
-     * @param  Record $record
+     * @param  RecordInterface $record
      * @return void
      */
-    public function visitRecord (Record $record);
+    public function visitRecord (RecordInterface $record) : void;
 
     /**
      * Visit a record metadata entity.
      *
-     * @param  Metadata $record
+     * @param  Metadata $metadata
      * @return void
      */
-    public function visitMetadata (Metadata $metadata);
+    public function visitMetadata (Metadata $metadata) : void;
 
     /**
      * Visit a set entity.
      *
-     * @param  Set $set
+     * @param  SetInterface $set
      * @return void
      */
-    public function visitSet (Set $set);
+    public function visitSet (SetInterface $set) : void;
 
     /**
      * Visit a metadata format entity.
      *
-     * @param  MetadataFormat $metadataFormat
+     * @param  MetadataFormatInterface $metadataFormat
      * @return void
      */
-    public function visitMetadataFormat (MetadataFormat $metadataFormat);
+    public function visitMetadataFormat (MetadataFormatInterface $metadataFormat) : void;
 
     /**
      * Visit a resumption token entity.
@@ -78,7 +78,7 @@ interface VisitorInterface
      * @param  ResumptionToken $resumptionToken
      * @return void
      */
-    public function visitResumptionToken (ResumptionToken $resumptionToken);
+    public function visitResumptionToken (ResumptionToken $resumptionToken) : void;
 
     /**
      * Visit a XML serializable entity.
@@ -86,7 +86,7 @@ interface VisitorInterface
      * @param  XmlSerializableInterface $entity
      * @return void
      */
-    public function visitXmlSerializable (XmlSerializableInterface $entity);
+    public function visitXmlSerializable (XmlSerializableInterface $entity) : void;
 
     /**
      * Visit body of a Identify response.
@@ -94,6 +94,6 @@ interface VisitorInterface
      * @param  Identity $identity
      * @return void
      */
-    public function visitIdentity (Identity $entity);
+    public function visitIdentity (Identity $identity) : void;
 
 }

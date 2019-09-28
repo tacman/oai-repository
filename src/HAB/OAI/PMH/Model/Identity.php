@@ -23,6 +23,7 @@
 
 namespace HAB\OAI\PMH\Model;
 
+use Iterator;
 use ArrayIterator;
 use IteratorAggregate;
 
@@ -55,7 +56,7 @@ class Identity implements ResponseBodyInterface, IteratorAggregate
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         $visitor->visitIdentity($this);
     }
@@ -63,7 +64,7 @@ class Identity implements ResponseBodyInterface, IteratorAggregate
     /**
      * {@inheritDoc}
      */
-    public function getIterator ()
+    public function getIterator () : Iterator
     {
         $properties = array_filter($this->properties, 'is_array');
         return new ArrayIterator($properties);

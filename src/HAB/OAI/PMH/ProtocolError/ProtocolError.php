@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -29,7 +29,7 @@ use RuntimeException;
  * Base class of OAI-PMH 2.0 protocol errors.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 abstract class ProtocolError extends RuntimeException

@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -31,7 +31,7 @@ use DateTimeImmutable;
  * UtcDateTime.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 final class UtcDateTime
@@ -50,9 +50,9 @@ final class UtcDateTime
      * Return true if argument is valid UTCdatetime string.
      *
      * @param  string $datetime
-     * @return boolean
+     * @return bool
      */
-    public static function isValid ($datetime)
+    public static function isValid ($datetime) : bool
     {
         if (preg_match('/^\d\d\d\d-\d\d-\d\d(T\d\d:\d\d:\d\dZ)?$/u', $datetime)) {
             if (strlen($datetime) === 10) {
@@ -80,7 +80,7 @@ final class UtcDateTime
      *
      * @return string
      */
-    public function __toString ()
+    public function __toString () : string
     {
         return $this->datetime->format(self::G_DATETIME);
     }

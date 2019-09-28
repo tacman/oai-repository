@@ -30,20 +30,20 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-interface RecordInterface
+interface RecordInterface extends VisitableInterface
 {
     /**
      * Return header.
      *
-     * @return Header
+     * @return HeaderInterface
      */
-    public function getHeader ();
+    public function getHeader () : HeaderInterface;
 
     /**
      * Return metadata.
      *
      * @return Metadata
      */
-    public function getMetadata ();
+    public function getMetadata () : Metadata;
 
 }

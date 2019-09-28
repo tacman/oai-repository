@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -31,7 +31,7 @@ use InvalidArgumentException;
  * Hydrate/dehydrate command.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class Hydrator
@@ -44,15 +44,12 @@ class Hydrator
      * @param  object $command
      * @return string
      */
-    public function createResumptionToken ($command)
+    public function createResumptionToken ($command) : string
     {
         if (!is_object($command)) {
             throw new InvalidArgumentException(sprintf('Expected command to be an object, %s given', gettype($command)));
         }
-        $data = array();
-        foreach ($command as $name => $value) {
-            $data[$name] = $value;
-        }
+        $data = get_object_vars($command);
         $token = base64_encode(http_build_query($data));
         return $token;
     }
@@ -67,7 +64,7 @@ class Hydrator
      * @param  string $token
      * @return void
      */
-    public function resume ($command, $token)
+    public function resume ($command, $token) : void
     {
         if (!is_object($command)) {
             throw new InvalidArgumentException(sprintf('Expected command to be an object, %s given', gettype($command)));

@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -27,7 +27,7 @@ namespace HAB\OAI\PMH\Model;
  * Response body default implementation.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class ResponseBody implements ResponseBodyInterface
@@ -42,7 +42,7 @@ class ResponseBody implements ResponseBodyInterface
     /**
      * Resumption Token.
      *
-     * @var ResumptionToken
+     * @var ResumptionToken|null
      */
     private $resumptionToken;
 
@@ -57,7 +57,7 @@ class ResponseBody implements ResponseBodyInterface
      * @param  VisitableInterface $entry
      * @return void
      */
-    public function append (VisitableInterface $entry)
+    public function append (VisitableInterface $entry) : void
     {
         $this->entries []= $entry;
     }
@@ -68,7 +68,7 @@ class ResponseBody implements ResponseBodyInterface
      * @param  ResumptionToken $resumptionToken
      * @return void
      */
-    public function setResumptiontoken (ResumptionToken $resumptionToken)
+    public function setResumptiontoken (ResumptionToken $resumptionToken) : void
     {
         $this->resumptionToken = $resumptionToken;
     }
@@ -76,9 +76,9 @@ class ResponseBody implements ResponseBodyInterface
     /**
      * Return resumption token.
      *
-     * @return ResumptionToken
+     * @return ?ResumptionToken
      */
-    public function getResumptiontoken ()
+    public function getResumptiontoken () : ?ResumptionToken
     {
         return $this->resumptionToken;
     }
@@ -86,7 +86,7 @@ class ResponseBody implements ResponseBodyInterface
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         foreach ($this->entries as $entry) {
             $entry->accept($visitor);

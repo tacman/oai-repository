@@ -30,27 +30,27 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-interface MetadataFormatInterface
+interface MetadataFormatInterface extends VisitableInterface
 {
     /**
      * Return prefix.
      *
      * @return string
      */
-    public function getPrefix ();
+    public function getPrefix () : string;
 
     /**
      * Return schema uri.
      *
      * @return string
      */
-    public function getSchemaUri ();
+    public function getSchemaUri () : string;
 
     /**
      * Return namespace uri.
      *
      * @return string
      */
-    public function getNamespaceUri ();
+    public function getNamespaceUri () : string;
 
 }

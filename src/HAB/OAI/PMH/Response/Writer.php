@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -31,7 +31,7 @@ use XMLWriter;
  * Write response.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class Writer implements Model\VisitorInterface
@@ -54,7 +54,7 @@ class Writer implements Model\VisitorInterface
      * @param  Response $response
      * @return string
      */
-    public function serialize (Response $response)
+    public function serialize (Response $response) : string
     {
         $this->writer->openMemory();
         $this->writer->startDocument();
@@ -84,7 +84,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitHeader (Model\Header $header)
+    public function visitHeader (Model\HeaderInterface $header) : void
     {
         $this->start('header');
         if ($header->isDeleted()) {
@@ -101,7 +101,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitRecord (Model\Record $record)
+    public function visitRecord (Model\RecordInterface $record) : void
     {
         $this->start('record');
         $record->getHeader()->accept($this);
@@ -112,7 +112,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitMetadata (Model\Metadata $metadata)
+    public function visitMetadata (Model\Metadata $metadata) : void
     {
         $this->start('metadata');
         $this->xml($metadata->toXML());
@@ -122,7 +122,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitSet (Model\Set $set)
+    public function visitSet (Model\SetInterface $set) : void
     {
         $this->start('set');
         $this->element('setSpec', $set->getSpec());
@@ -133,7 +133,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitMetadataFormat (Model\MetadataFormat $metadataFormat)
+    public function visitMetadataFormat (Model\MetadataFormatInterface $metadataFormat) : void
     {
         $this->start('metadataFormat');
         $this->element('metadataPrefix', $metadataFormat->getPrefix());
@@ -145,7 +145,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitResumptionToken (Model\ResumptionToken $resumptionToken)
+    public function visitResumptionToken (Model\ResumptionToken $resumptionToken) : void
     {
         $attrs = array();
         if ($cursor = $resumptionToken->getCursor()) {
@@ -163,7 +163,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitXmlSerializable (Model\XmlSerializableInterface $entity)
+    public function visitXmlSerializable (Model\XmlSerializableInterface $entity) : void
     {
         $this->xml($entity->toXML());
     }
@@ -171,7 +171,7 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function visitIdentity (Model\Identity $identity)
+    public function visitIdentity (Model\Identity $identity) : void
     {
         foreach ($identity as $name => $values) {
             foreach ($values as $value) {
@@ -188,22 +188,22 @@ class Writer implements Model\VisitorInterface
 
     ///
 
-    private function start ($name)
+    private function start ($name) : void
     {
         $this->writer->startElement($name);
     }
 
-    private function end ()
+    private function end () : void
     {
         $this->writer->endElement();
     }
 
-    private function attribute ($name, $value)
+    private function attribute ($name, $value) : void
     {
         $this->writer->writeAttribute($name, $value);
     }
 
-    private function element ($name, $content = null, $attrs = null)
+    private function element ($name, $content = null, $attrs = null) : void
     {
         $this->writer->startElement($name);
         if ($attrs) {
@@ -217,7 +217,7 @@ class Writer implements Model\VisitorInterface
         $this->writer->endElement();
     }
 
-    private function xml ($xmlContent)
+    private function xml ($xmlContent) : void
     {
         $this->writer->writeRaw($xmlContent);
     }

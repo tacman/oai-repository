@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -27,7 +27,7 @@ namespace HAB\OAI\PMH\Model;
  * Resumption token default implementation.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class ResumptionToken implements VisitableInterface
@@ -68,9 +68,9 @@ class ResumptionToken implements VisitableInterface
     /**
      * Return cursor.
      *
-     * @return integer
+     * @return int
      */
-    public function getCursor ()
+    public function getCursor () : int
     {
         return $this->cursor;
     }
@@ -78,9 +78,9 @@ class ResumptionToken implements VisitableInterface
     /**
      * Return complete list size.
      *
-     * @return integer
+     * @return int
      */
-    public function getCompletelistsize ()
+    public function getCompletelistsize () : int
     {
         return $this->completeListSize;
     }
@@ -88,9 +88,9 @@ class ResumptionToken implements VisitableInterface
     /**
      * Return expiration date.
      *
-     * @return UtcDateTime
+     * @return ?UtcDateTime
      */
-    public function getExpirationdate ()
+    public function getExpirationdate () : ?UtcDateTime
     {
         return $this->expirationDate;
     }
@@ -101,7 +101,7 @@ class ResumptionToken implements VisitableInterface
      * @param  integer $cursor
      * @return void
      */
-    public function setCursor ($cursor)
+    public function setCursor ($cursor) : void
     {
         $this->cursor = $cursor;
     }
@@ -112,7 +112,7 @@ class ResumptionToken implements VisitableInterface
      * @param  integer $completeListSize
      * @return void
      */
-    public function setCompletelistsize ($completeListSize)
+    public function setCompletelistsize ($completeListSize) : void
     {
         $this->completeListSize = $completeListSize;
     }
@@ -123,7 +123,7 @@ class ResumptionToken implements VisitableInterface
      * @param  UtcDateTime $expirationDate
      * @return void
      */
-    public function setExpirationdate (UtcDateTime $expirationDate)
+    public function setExpirationdate (UtcDateTime $expirationDate) : void
     {
         $this->expirationDate = $expirationDate;
     }
@@ -131,7 +131,7 @@ class ResumptionToken implements VisitableInterface
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         $visitor->visitResumptionToken($this);
     }
@@ -139,7 +139,7 @@ class ResumptionToken implements VisitableInterface
     /**
      * {@inheritDoc}
      */
-    public function __toString ()
+    public function __toString () : string
     {
         return (string)$this->token;
     }

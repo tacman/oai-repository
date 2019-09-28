@@ -17,17 +17,20 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
 namespace HAB\OAI\PMH\Repository;
 
+use HAB\OAI\PMH\ProtocolError;
+use HAB\OAI\PMH\Model;
+
 /**
  * Interface of a repository.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 interface RepositoryInterface
@@ -42,14 +45,14 @@ interface RepositoryInterface
      * @param  string $metadataPrefix
      * @return Model\ResponseBodyInterface
      */
-    public function getRecord ($identifier, $metadataPrefix);
+    public function getRecord ($identifier, $metadataPrefix) : Model\ResponseBodyInterface;
 
     /**
      * Retrieve information about the repository.
      *
-     * @return Model\Identify
+     * @return Model\Identity
      */
-    public function identify ();
+    public function identify () : Model\Identity;
 
     /**
      * Abbreviated form of listRecords(), retrieving only headers.
@@ -65,7 +68,7 @@ interface RepositoryInterface
      * @param  string $set
      * @return Model\ResponseBodyInterface
      */
-    public function listIdentifiers ($metadataPrefix, $from = null, $until = null, $set = null);
+    public function listIdentifiers ($metadataPrefix, $from = null, $until = null, $set = null) : Model\ResponseBodyInterface;
 
     /**
      * Harvest records from the repository.
@@ -81,7 +84,7 @@ interface RepositoryInterface
      * @param  string $set
      * @return Model\ResponseBodyInterface
      */
-    public function listRecords ($metadataPrefix, $from = null, $until = null, $set = null);
+    public function listRecords ($metadataPrefix, $from = null, $until = null, $set = null) : Model\ResponseBodyInterface;
 
     /**
      * Retrieve the metadata formats available.
@@ -92,7 +95,7 @@ interface RepositoryInterface
      * @param  string $identifier
      * @return Model\ResponseBodyInterface
      */
-    public function listMetadataFormats ($identifier = null);
+    public function listMetadataFormats ($identifier = null) : Model\ResponseBodyInterface;
 
     /**
      * Retrieve the set structure.
@@ -101,7 +104,7 @@ interface RepositoryInterface
      *
      * @return Model\ResponseBodyInterface
      */
-    public function listSets ();
+    public function listSets () : Model\ResponseBodyInterface;
 
     /**
      * Resume operation.
@@ -112,6 +115,6 @@ interface RepositoryInterface
      * @param  string $resumptionToken
      * @return Model\ResponseBodyInterface
      */
-    public function resume ($verb, $resumptionToken);
+    public function resume ($verb, $resumptionToken) : Model\ResponseBodyInterface;
 
 }

@@ -30,7 +30,7 @@ namespace HAB\OAI\PMH\Model;
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class Record implements RecordInterface, VisitableInterface
+class Record implements RecordInterface
 {
     /**
      * Header.
@@ -55,9 +55,9 @@ class Record implements RecordInterface, VisitableInterface
     /**
      * Return header.
      *
-     * @return Header
+     * @return HeaderInterface
      */
-    public function getHeader ()
+    public function getHeader () : HeaderInterface
     {
         return $this->header;
     }
@@ -67,7 +67,7 @@ class Record implements RecordInterface, VisitableInterface
      *
      * @return Metadata
      */
-    public function getMetadata ()
+    public function getMetadata () : Metadata
     {
         return $this->metadata;
     }
@@ -75,7 +75,7 @@ class Record implements RecordInterface, VisitableInterface
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         $visitor->visitRecord($this);
     }

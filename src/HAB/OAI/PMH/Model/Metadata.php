@@ -47,7 +47,7 @@ class Metadata implements VisitableInterface, XmlSerializableInterface
     /**
      * {@inheritDoc}
      */
-    public function accept (VisitorInterface $visitor)
+    public function accept (VisitorInterface $visitor) : void
     {
         $visitor->visitMetadata($this);
     }
@@ -55,7 +55,7 @@ class Metadata implements VisitableInterface, XmlSerializableInterface
     /**
      * {@inheritDoc}
      */
-    public function toXML ()
+    public function toXML () : string
     {
         return $this->content;
     }

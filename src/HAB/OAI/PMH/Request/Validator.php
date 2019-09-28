@@ -17,7 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
@@ -33,7 +33,7 @@ use HAB\OAI\PMH\ProtocolError\BadVerb;
  * Validate request parameters.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class Validator
@@ -81,7 +81,7 @@ class Validator
     /**
      * Errors.
      *
-     * @var ProtocolError\ProtocolError[]
+     * @var ProtocolError[]
      */
     private $errors = array();
 
@@ -91,7 +91,7 @@ class Validator
      * @param  Parameters $parameters
      * @return void
      */
-    public function validate (Parameters $parameters)
+    public function validate (Parameters $parameters) : void
     {
         $this->errors = array();
         if (!$parameters['verb']) {
@@ -145,9 +145,9 @@ class Validator
     /**
      * Return errors.
      *
-     * @return ProtocolError\ProtocolError[]
+     * @return ProtocolError[]
      */
-    public function getErrors ()
+    public function getErrors () : iterable
     {
         return $this->errors;
     }
