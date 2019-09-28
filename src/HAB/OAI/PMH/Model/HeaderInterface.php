@@ -24,59 +24,40 @@
 namespace HAB\OAI\PMH\Model;
 
 /**
- * Set default implementation.
+ * Record header.
  *
  * @author    David Maus <maus@hab.de>
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class Set implements SetInterface, VisitableInterface
+interface HeaderInterface
 {
     /**
-     * Spec.
-     *
-     * @var string
-     */
-    private $spec;
-
-    /**
-     * Name.
-     *
-     * @var string
-     */
-    private $name;
-
-    public function __construct ($name, $spec)
-    {
-        $this->name = $name;
-        $this->spec = $spec;
-    }
-
-    /**
-     * Return spec.
+     * Return identifier.
      *
      * @return string
      */
-    public function getSpec ()
-    {
-        return $this->spec;
-    }
+    public function getIdentifier ();
 
     /**
-     * Return name.
+     * Return datestamp.
      *
-     * @return string
+     * @return UtcDateTime
      */
-    public function getName ()
-    {
-        return $this->name;
-    }
+    public function getDatestamp ();
 
     /**
-     * {@inheritDoc}
+     * Return specs.
+     *
+     * @return string[]
      */
-    public function accept (VisitorInterface $visitor)
-    {
-        $visitor->visitSet($this);
-    }
+    public function getSpecs ();
+
+    /**
+     * Return true if the record is deleted.
+     *
+     * @return boolean
+     */
+    public function isdeleted ();
+
 }

@@ -24,59 +24,26 @@
 namespace HAB\OAI\PMH\Model;
 
 /**
- * Set default implementation.
+ * Record.
  *
  * @author    David Maus <maus@hab.de>
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class Set implements SetInterface, VisitableInterface
+interface RecordInterface
 {
     /**
-     * Spec.
+     * Return header.
      *
-     * @var string
+     * @return Header
      */
-    private $spec;
+    public function getHeader ();
 
     /**
-     * Name.
+     * Return metadata.
      *
-     * @var string
+     * @return Metadata
      */
-    private $name;
+    public function getMetadata ();
 
-    public function __construct ($name, $spec)
-    {
-        $this->name = $name;
-        $this->spec = $spec;
-    }
-
-    /**
-     * Return spec.
-     *
-     * @return string
-     */
-    public function getSpec ()
-    {
-        return $this->spec;
-    }
-
-    /**
-     * Return name.
-     *
-     * @return string
-     */
-    public function getName ()
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function accept (VisitorInterface $visitor)
-    {
-        $visitor->visitSet($this);
-    }
 }

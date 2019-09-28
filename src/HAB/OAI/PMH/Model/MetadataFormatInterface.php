@@ -24,59 +24,33 @@
 namespace HAB\OAI\PMH\Model;
 
 /**
- * Set default implementation.
+ * Metadata format.
  *
  * @author    David Maus <maus@hab.de>
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class Set implements SetInterface, VisitableInterface
+interface MetadataFormatInterface
 {
     /**
-     * Spec.
-     *
-     * @var string
-     */
-    private $spec;
-
-    /**
-     * Name.
-     *
-     * @var string
-     */
-    private $name;
-
-    public function __construct ($name, $spec)
-    {
-        $this->name = $name;
-        $this->spec = $spec;
-    }
-
-    /**
-     * Return spec.
+     * Return prefix.
      *
      * @return string
      */
-    public function getSpec ()
-    {
-        return $this->spec;
-    }
+    public function getPrefix ();
 
     /**
-     * Return name.
+     * Return schema uri.
      *
      * @return string
      */
-    public function getName ()
-    {
-        return $this->name;
-    }
+    public function getSchemaUri ();
 
     /**
-     * {@inheritDoc}
+     * Return namespace uri.
+     *
+     * @return string
      */
-    public function accept (VisitorInterface $visitor)
-    {
-        $visitor->visitSet($this);
-    }
+    public function getNamespaceUri ();
+
 }
