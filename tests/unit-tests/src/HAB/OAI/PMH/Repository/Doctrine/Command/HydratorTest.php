@@ -17,46 +17,40 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
 namespace HAB\OAI\PMH\Repository\Doctrine\Command;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the command hydrator.
  *
  * @author    David Maus <maus@hab.de>
- * @copyright (c) 2016 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 class HydratorTest extends TestCase
 {
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testCreateResumptionTokenThrowsOnNonObject ()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $hydrator = new Hydrator();
         $hydrator->createResumptionToken(null);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testResumeThrowsOnNonObject ()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $hydrator = new Hydrator();
         $hydrator->resume(null, 'token');
     }
 
-    /**
-     * @expectedException HAB\OAI\PMH\ProtocolError\BadResumptionToken
-     */
     public function testResumeThrowsOnInvalidEncoding ()
     {
+        $this->expectException(\HAB\OAI\PMH\ProtocolError\BadResumptionToken::class);
         $hydrator = new Hydrator();
         $hydrator->resume(new \StdClass(), 'token');
     }
@@ -65,11 +59,11 @@ class HydratorTest extends TestCase
     {
         $command = new \StdClass();
         $command->foobar = "Foobar";
-        
+
         $hydrator = new Hydrator();
         $token = $hydrator->createResumptionToken($command);
-        
-        $this->assertInternalType('string', $token);
+
+        $this->assertIsString($token);
         $command = new \StdClass();
         $command->foobar = null;
         $hydrator->resume($command, $token);
