@@ -24,7 +24,6 @@
 namespace HAB\OAI\PMH\Model;
 
 use DateTimeZone;
-use DateTimeInterface;
 use DateTimeImmutable;
 
 /**
@@ -82,7 +81,7 @@ final class UtcDateTime
      */
     public function __toString () : string
     {
-        return $this->datetime->format(self::G_DATETIME);
+        return (string)$this->datetime->format(self::G_DATETIME);
     }
 
 }

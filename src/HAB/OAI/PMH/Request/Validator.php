@@ -121,8 +121,8 @@ class Validator
             }
         }
 
-        foreach ($parameters as $name => $value) {
-            if (!in_array($name, $rules['required']) and !in_array($name, $rules['optional'])) {
+        foreach ($parameters->getKeys() as $name) {
+            if (!in_array($name, $rules['required'], true) and !in_array($name, $rules['optional'], true)) {
                 $this->errors []= new BadArgument(sprintf("The argument '%s' is not a legal OAI-PMH argument", $name));
             }
         }

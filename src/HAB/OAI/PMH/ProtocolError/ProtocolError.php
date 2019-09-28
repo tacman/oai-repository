@@ -41,6 +41,6 @@ abstract class ProtocolError extends RuntimeException
      */
     final public function getErrorCode ()
     {
-        return lcfirst(substr(static::class, 1 + strrpos(static::class, '\\')));
+        return lcfirst((string)substr(static::class, intval(1 + strrpos(static::class, '\\'))));
     }
 }

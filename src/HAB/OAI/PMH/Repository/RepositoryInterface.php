@@ -62,7 +62,7 @@ interface RepositoryInterface
      * @throws ProtocolError\NoRecordsMatch
      * @throws ProtocolError\NoSetHierarchy
      *
-     * @Param  string $metadataPrefix
+     * @param  string $metadataPrefix
      * @param  string $from
      * @param  string $until
      * @param  string $set
@@ -78,7 +78,7 @@ interface RepositoryInterface
      * @throws ProtocolError\NoRecordsMatch
      * @throws ProtocolError\NoSetHierarchy
      *
-     * @Param  string $metadataPrefix
+     * @param  string $metadataPrefix
      * @param  string $from
      * @param  string $until
      * @param  string $set

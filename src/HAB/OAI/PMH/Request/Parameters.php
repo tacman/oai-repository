@@ -99,4 +99,9 @@ class Parameters implements ArrayAccess, IteratorAggregate, Countable
     {
         return count($this->data);
     }
+
+    public function getKeys ()
+    {
+        return array_keys($this->data);
+    }
 }
