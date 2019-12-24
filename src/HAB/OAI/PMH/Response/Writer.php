@@ -43,8 +43,14 @@ class Writer implements Model\VisitorInterface
      */
     private $writer;
 
-    public function __construct ()
+    /**
+     * @var bool
+     */
+    private $dateGranularity;
+
+    public function __construct (bool $dateGranularity = false)
     {
+        $this->dateGranularity = $dateGranularity;
         $this->writer = new XMLWriter();
     }
 
@@ -91,7 +97,11 @@ class Writer implements Model\VisitorInterface
             $this->attribute('status', 'deleted');
         }
         $this->element('identifier', $header->getIdentifier());
-        $this->element('datestamp', $header->getDatestamp());
+        if ($this->dateGranularity) {
+            $this->element('datestamp', substr($header->getDatestamp(), 0, 10));
+        } else {
+            $this->element('datestamp', $header->getDatestamp());
+        }
         foreach ($header->getSpecs() as $spec) {
             $this->element('setSpec', $spec);
         }
