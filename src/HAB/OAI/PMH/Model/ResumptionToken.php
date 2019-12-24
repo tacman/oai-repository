@@ -70,7 +70,7 @@ class ResumptionToken implements VisitableInterface
      *
      * @return int
      */
-    public function getCursor () : int
+    public function getCursor () : ?int
     {
         return $this->cursor;
     }
@@ -80,7 +80,7 @@ class ResumptionToken implements VisitableInterface
      *
      * @return int
      */
-    public function getCompletelistsize () : int
+    public function getCompletelistsize () : ?int
     {
         return $this->completeListSize;
     }
