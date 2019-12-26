@@ -158,7 +158,8 @@ class Writer implements Model\VisitorInterface
     public function visitResumptionToken (Model\ResumptionToken $resumptionToken) : void
     {
         $attrs = array();
-        if ($cursor = $resumptionToken->getCursor()) {
+        $cursor = $resumptionToken->getCursor();
+        if (is_int($cursor)) {
             $attrs['cursor'] = $cursor;
         }
         if ($completeListSize = $resumptionToken->getCompleteListSize()) {
