@@ -66,7 +66,7 @@ class Writer implements Model\VisitorInterface
     {
         $this->writer->openMemory();
         $this->writer->startDocument();
-        $this->writer->startElementNS('', 'OAI-PMH', 'http://www.openarchives.org/OAI/2.0/');
+        $this->writer->startElementNS(null, 'OAI-PMH', 'http://www.openarchives.org/OAI/2.0/');
         $this->writer->writeAttributeNS(
             'xsi', 'schemaLocation', 'http://www.w3.org/2001/XMLSchema-instance',
             'http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd'
