@@ -17,6 +17,7 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <maus@hab.de>
+ * @copyright (c) 2020 by Staats- und Universitätsbibliothek Hamburg
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
@@ -31,6 +32,7 @@ use XMLWriter;
  * Write response.
  *
  * @author    David Maus <maus@hab.de>
+ * @copyright (c) 2020 by Staats- und Universitätsbibliothek Hamburg
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
@@ -199,22 +201,22 @@ class Writer implements Model\VisitorInterface
 
     ///
 
-    private function start ($name) : void
+    protected function start ($name) : void
     {
         $this->writer->startElement($name);
     }
 
-    private function end () : void
+    protected function end () : void
     {
         $this->writer->endElement();
     }
 
-    private function attribute ($name, $value) : void
+    protected function attribute ($name, $value) : void
     {
         $this->writer->writeAttribute($name, $value);
     }
 
-    private function element ($name, $content = null, $attrs = null) : void
+    protected function element ($name, $content = null, $attrs = null) : void
     {
         $this->writer->startElement($name);
         if ($attrs) {
@@ -228,7 +230,7 @@ class Writer implements Model\VisitorInterface
         $this->writer->endElement();
     }
 
-    private function xml ($xmlContent) : void
+    protected function xml ($xmlContent) : void
     {
         $this->writer->writeRaw($xmlContent);
     }
