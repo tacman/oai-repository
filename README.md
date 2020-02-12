@@ -5,7 +5,7 @@ OAI Repository
 
 An OAI-PMH 2.0 repository implementation.
 
-OAI Repository is Copyright (c) 2016 by Herzog August Bibliothek and released
+OAI Repository is Copyright (c) 2016-2020 by Herzog August Bibliothek and released
 under the terms of the GNU General Public License v3.
 
 This implementation was developed for the
