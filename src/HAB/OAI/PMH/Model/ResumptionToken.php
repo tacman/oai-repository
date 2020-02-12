@@ -68,7 +68,7 @@ class ResumptionToken implements VisitableInterface
     /**
      * Return cursor.
      *
-     * @return int
+     * @return ?int
      */
     public function getCursor () : ?int
     {
@@ -78,7 +78,7 @@ class ResumptionToken implements VisitableInterface
     /**
      * Return complete list size.
      *
-     * @return int
+     * @return ?int
      */
     public function getCompletelistsize () : ?int
     {
