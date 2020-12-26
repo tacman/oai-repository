@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @author    David Maus <maus@hab.de>
+ * @author    David Maus <david.maus@sub.uni-hamburg.de>
  * @copyright (c) 2020 by Staats- und Universitätsbibliothek Hamburg
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
@@ -36,7 +36,7 @@ use DOMDocument;
 /**
  * Unit tests for the Writer class.
  *
- * @author    David Maus <maus@hab.de>
+ * @author    David Maus <david.maus@sub.uni-hamburg.de>
  * @copyright (c) 2020 by Staats- und Universitätsbibliothek Hamburg
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @author    David Maus <maus@hab.de>
+ * @author    David Maus <david.maus@sub.uni-hamburg.de>
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
@@ -26,7 +26,7 @@ namespace HAB\OAI\PMH\Model;
 /**
  * Record default implementation.
  *
- * @author    David Maus <maus@hab.de>
+ * @author    David Maus <david.maus@sub.uni-hamburg.de>
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
