@@ -73,7 +73,23 @@ class Identity implements ResponseBodyInterface, IteratorAggregate
         return new ArrayIterator($properties);
     }
 
-    public function __set (string $name, mixed $value) : void
+    /**
+     * @param mixed $value
+     */
+    public function add (string $name, $value) : void
+    {
+        if (array_key_exists($name, $this->properties)) {
+            if ($this->properties[$name] === null) {
+                $this->properties[$name] = array();
+            }
+            $this->properties[$name][] = $value;
+        }
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function __set (string $name, $value) : void
     {
         if (array_key_exists($name, $this->properties)) {
             if (!is_array($value)) {
