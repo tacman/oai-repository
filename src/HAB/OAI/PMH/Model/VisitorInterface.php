@@ -57,6 +57,14 @@ interface VisitorInterface
     public function visitMetadata (Metadata $metadata) : void;
 
     /**
+     * Visit a description entity.
+     *
+     * @param  Description $description
+     * @return void
+     */
+    public function visitDescription (Description $description) : void;
+
+    /**
      * Visit a set entity.
      *
      * @param  SetInterface $set

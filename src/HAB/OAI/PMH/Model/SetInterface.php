@@ -46,4 +46,11 @@ interface SetInterface extends VisitableInterface
      */
     public function getName () : string;
 
+    /**
+     * Return description.
+     *
+     * @return iterable<Description>
+     */
+    public function getDescriptions () : iterable;
+
 }

@@ -135,11 +135,24 @@ class Writer implements Model\VisitorInterface
     /**
      * {@inheritDoc}
      */
+    public function visitDescription (Model\Description $description) : void
+    {
+        $this->start('description');
+        $this->xml($description->toXML());
+        $this->end();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function visitSet (Model\SetInterface $set) : void
     {
         $this->start('set');
         $this->element('setSpec', $set->getSpec());
         $this->element('setName', $set->getName());
+        foreach ($set->getDescriptions() as $description) {
+            $description->accept($this);
+        }
         $this->end();
     }
 

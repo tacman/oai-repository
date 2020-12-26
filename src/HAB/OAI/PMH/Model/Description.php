@@ -17,75 +17,31 @@
  * along with HAB OAI Repository.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @author    David Maus <david.maus@sub.uni-hamburg.de>
- * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2020 by Staats- und Universitätsbibliothek Hamburg
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
 
 namespace HAB\OAI\PMH\Model;
 
 /**
- * Set default implementation.
+ * Description.
  *
  * @author    David Maus <david.maus@sub.uni-hamburg.de>
- * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
+ * @copyright (c) 2020 by Staats- und Universitätsbibliothek Hamburg
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
  */
-class Set implements SetInterface
+class Description implements VisitableInterface, XmlSerializableInterface
 {
     /**
-     * Spec.
+     * Content.
      *
      * @var string
      */
-    private $spec;
+    private $content;
 
-    /**
-     * Name.
-     *
-     * @var string
-     */
-    private $name;
-
-    /**
-     * Descriptions.
-     *
-     * @var iterable<Description>
-     */
-    private $descriptions;
-
-    /**
-     * @param iterable<Description> $descriptions
-     */
-    public function __construct (string $name, string $spec, iterable $descriptions = array())
+    public function __construct (string $content)
     {
-        $this->name = $name;
-        $this->spec = $spec;
-        $this->descriptions = $descriptions;
-    }
-
-    /**
-     * Return spec.
-     *
-     * @return string
-     */
-    public function getSpec () : string
-    {
-        return $this->spec;
-    }
-
-    /**
-     * Return name.
-     *
-     * @return string
-     */
-    public function getName () : string
-    {
-        return $this->name;
-    }
-
-    public function getDescriptions () : iterable
-    {
-        return $this->descriptions;
+        $this->content = $content;
     }
 
     /**
@@ -93,6 +49,14 @@ class Set implements SetInterface
      */
     public function accept (VisitorInterface $visitor) : void
     {
-        $visitor->visitSet($this);
+        $visitor->visitDescription($this);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toXML () : string
+    {
+        return $this->content;
     }
 }
