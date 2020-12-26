@@ -61,7 +61,10 @@ class Header implements HeaderInterface
      */
     private $isDeleted;
 
-    public function __construct ($identifier, UtcDateTime $datestamp, $specs = null, $isDeleted = false)
+    /**
+     * @param ?iterable<string> $specs
+     */
+    public function __construct (string $identifier, UtcDateTime $datestamp, ?iterable $specs = null, bool $isDeleted = false)
     {
         $this->identifier = $identifier;
         $this->datestamp = $datestamp;

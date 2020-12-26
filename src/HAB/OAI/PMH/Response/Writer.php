@@ -66,6 +66,7 @@ class Writer implements Model\VisitorInterface
     {
         $this->writer->openMemory();
         $this->writer->startDocument();
+        // @phan-suppress-next-line PhanTypeMismatchArgumentInternalProbablyReal
         $this->writer->startElementNS(null, 'OAI-PMH', 'http://www.openarchives.org/OAI/2.0/');
         $this->writer->writeAttributeNS(
             'xsi', 'schemaLocation', 'http://www.w3.org/2001/XMLSchema-instance',
@@ -201,7 +202,7 @@ class Writer implements Model\VisitorInterface
 
     ///
 
-    protected function start ($name) : void
+    protected function start (string $name) : void
     {
         $this->writer->startElement($name);
     }
@@ -211,12 +212,15 @@ class Writer implements Model\VisitorInterface
         $this->writer->endElement();
     }
 
-    protected function attribute ($name, $value) : void
+    protected function attribute (string $name, string $value) : void
     {
         $this->writer->writeAttribute($name, $value);
     }
 
-    protected function element ($name, $content = null, $attrs = null) : void
+    /**
+     * @param ?iterable<string,mixed> $attrs
+     */
+    protected function element (string $name, ?string $content = null, ?iterable $attrs = null) : void
     {
         $this->writer->startElement($name);
         if ($attrs) {
@@ -230,7 +234,7 @@ class Writer implements Model\VisitorInterface
         $this->writer->endElement();
     }
 
-    protected function xml ($xmlContent) : void
+    protected function xml (string $xmlContent) : void
     {
         $this->writer->writeRaw($xmlContent);
     }

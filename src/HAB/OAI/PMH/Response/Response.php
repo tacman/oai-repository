@@ -50,7 +50,7 @@ class Response
     /**
      * Parameters.
      *
-     * @var Parameters|null
+     * @var Parameters<string,string>|null
      */
     private $parameters;
 
@@ -76,7 +76,10 @@ class Response
     private $errors;
 
 
-    public function __construct ($baseUrl, Parameters $parameters)
+    /**
+     * @param Parameters<string,string> $parameters
+     */
+    public function __construct (string $baseUrl, Parameters $parameters)
     {
         $this->baseUrl = $baseUrl;
         $this->parameters = $parameters;
@@ -97,7 +100,7 @@ class Response
     /**
      * Return parameters.
      *
-     * @return Parameters|null
+     * @return Parameters<string,string>|null
      */
     public function getParameters () : ?Parameters
     {

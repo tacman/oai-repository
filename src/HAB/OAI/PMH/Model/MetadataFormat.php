@@ -53,7 +53,7 @@ class MetadataFormat implements MetadataFormatInterface
      */
     private $prefix;
 
-    public function __construct ($prefix, $namespaceUri, $schemaUri)
+    public function __construct (string $prefix, string $namespaceUri, string $schemaUri)
     {
         $this->prefix = $prefix;
         $this->namespaceUri = $namespaceUri;

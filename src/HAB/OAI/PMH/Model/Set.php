@@ -46,7 +46,7 @@ class Set implements SetInterface
      */
     private $name;
 
-    public function __construct ($name, $spec)
+    public function __construct (string $name, string $spec)
     {
         $this->name = $name;
         $this->spec = $spec;

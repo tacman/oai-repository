@@ -61,15 +61,17 @@ final class UtcDateTime
             }
             @date_create_from_format($fmtString, $datetime);
             $errors = date_get_last_errors();
-            if ($errors['warning_count'] > 0 or $errors['error_count'] > 0) {
-                return false;
+            if ($errors) {
+                if ($errors['warning_count'] > 0 or $errors['error_count'] > 0) {
+                    return false;
+                }
             }
             return true;
         }
         return false;
     }
 
-    public function __construct ($datetime = 'now')
+    public function __construct (string $datetime = 'now')
     {
         $this->datetime = new DateTimeImmutable($datetime, new DateTimeZone('UTC'));
     }

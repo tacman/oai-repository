@@ -50,7 +50,7 @@ interface RepositoryInterface
     /**
      * Retrieve information about the repository.
      *
-     * @return Model\Identity
+     * @return Model\Identity<string,mixed>
      */
     public function identify () : Model\Identity;
 

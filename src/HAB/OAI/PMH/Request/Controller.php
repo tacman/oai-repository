@@ -51,7 +51,7 @@ class Controller
         $this->repository = $repository;
     }
 
-    public function handle ($baseUrl, Parameters $params) : Response
+    public function handle (string $baseUrl, Parameters $params) : Response
     {
         $response = new Response($baseUrl, $params);
         if ($errors = $this->validate($params)) {

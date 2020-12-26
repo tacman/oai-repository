@@ -34,16 +34,22 @@ use Countable;
  * @author    David Maus <maus@hab.de>
  * @copyright (c) 2016-2019 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
+ *
+ * @template-implements ArrayAccess<string,string>
+ * @template-implements IteratorAggregate<string,string>
  */
 class Parameters implements ArrayAccess, IteratorAggregate, Countable
 {
     /**
      * Data.
      *
-     * @var array
+     * @var array<string,string>
      */
     private $data;
 
+    /**
+     * @param array<string,string> $parameters
+     */
     public function __construct (array $parameters)
     {
         $this->data = $parameters;
@@ -100,7 +106,10 @@ class Parameters implements ArrayAccess, IteratorAggregate, Countable
         return count($this->data);
     }
 
-    public function getKeys ()
+    /**
+     * @return list<string>|list<int>
+     */
+    public function getKeys () : array
     {
         return array_keys($this->data);
     }

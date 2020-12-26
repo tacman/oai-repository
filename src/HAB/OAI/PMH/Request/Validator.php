@@ -42,7 +42,7 @@ class Validator
     /**
      * Validation rules, indexed by verb.
      *
-     * @var array
+     * @var array<string,array>
      */
     private static $rules = array(
         'Identify' => array(
@@ -88,7 +88,7 @@ class Validator
     /**
      * Validate request parameters.
      *
-     * @param  Parameters $parameters
+     * @param  Parameters<string,string> $parameters
      * @return void
      */
     public function validate (Parameters $parameters) : void

@@ -39,7 +39,7 @@ class Metadata implements VisitableInterface, XmlSerializableInterface
      */
     private $content;
 
-    public function __construct ($content)
+    public function __construct (string $content)
     {
         $this->content = $content;
     }

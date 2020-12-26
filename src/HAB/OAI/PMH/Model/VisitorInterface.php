@@ -91,7 +91,7 @@ interface VisitorInterface
     /**
      * Visit body of a Identify response.
      *
-     * @param  Identity $identity
+     * @param  Identity<string, mixed> $identity
      * @return void
      */
     public function visitIdentity (Identity $identity) : void;

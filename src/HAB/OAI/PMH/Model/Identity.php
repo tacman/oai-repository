@@ -33,13 +33,15 @@ use IteratorAggregate;
  * @author    David Maus <maus@hab.de>
  * @copyright (c) 2017 by Herzog August Bibliothek Wolfenbüttel
  * @license   http://www.gnu.org/licenses/gpl.txt GNU General Public License v3 or higher
+ *
+ * @template-implements IteratorAggregate<string,mixed>
  */
 class Identity implements ResponseBodyInterface, IteratorAggregate
 {
     /**
      * Identification properties.
      *
-     * @var array
+     * @var array<string,?array>
      */
     private $properties = array(
         'repositoryName'    => null,
@@ -58,11 +60,12 @@ class Identity implements ResponseBodyInterface, IteratorAggregate
      */
     public function accept (VisitorInterface $visitor) : void
     {
+        // @phan-suppress-next-line PhanTypeMismatchArgument
         $visitor->visitIdentity($this);
     }
 
     /**
-     * {@inheritDoc}
+     * @return Iterator<string,?array>
      */
     public function getIterator () : Iterator
     {
@@ -70,7 +73,7 @@ class Identity implements ResponseBodyInterface, IteratorAggregate
         return new ArrayIterator($properties);
     }
 
-    public function __set ($name, $value)
+    public function __set (string $name, mixed $value) : void
     {
         if (array_key_exists($name, $this->properties)) {
             if (!is_array($value)) {
