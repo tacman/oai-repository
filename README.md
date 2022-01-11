@@ -1,11 +1,9 @@
 OAI Repository
 ==
 
-[![Build Status](https://travis-ci.org/dmj/oai-repository.svg?branch=master)](https://travis-ci.org/dmj/oai-repository)
-
 An OAI-PMH 2.0 repository implementation.
 
-OAI Repository is Copyright (c) 2016-2020 by Herzog August Bibliothek and released
+OAI Repository is Copyright (c) 2016-2022 by Herzog August Bibliothek and released
 under the terms of the GNU General Public License v3.
 
 This implementation was developed for the
