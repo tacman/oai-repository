@@ -80,7 +80,7 @@ trait Resumable
      * @param  string $token
      * @return void
      */
-    public function resume (HydratorInterface $hydrator, string $token) : ?void
+    public function resume (HydratorInterface $hydrator, string $token) : void
     {
         if ($hydrator->hydrate($this, $token) === false) {
             throw new BadResumptionToken();
