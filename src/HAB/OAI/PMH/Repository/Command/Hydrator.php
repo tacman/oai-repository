@@ -39,6 +39,9 @@ final class Hydrator implements HydratorInterface
      */
     public function hydrate (object $command, string $token) : bool
     {
+        if ($token === '') {
+            return false;
+        }
         $token = base64_decode($token, true);
         if ($token === false) {
             return false;
