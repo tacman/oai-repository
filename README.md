@@ -3,6 +3,8 @@ OAI Repository
 
 An OAI-PMH 2.0 repository implementation.
 
+![build status](https://circleci.com/gh/dmj/oai-repository.svg)
+
 OAI Repository is Copyright (c) 2016-2022 by Herzog August Bibliothek and released under the terms of the GNU General
 Public License v3.
 
