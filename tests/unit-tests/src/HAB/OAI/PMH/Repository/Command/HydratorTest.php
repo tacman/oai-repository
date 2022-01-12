@@ -42,7 +42,7 @@ class HydratorTest extends TestCase
 {
     public function testHydrateUnknownProperty () : void
     {
-        $hydrator = new Hydrator();
+        $hydrator = $this->createHydrator();
         $command = new StdClass();
         $command->property = 1;
         $token = $hydrator->extract($command);
@@ -55,16 +55,27 @@ class HydratorTest extends TestCase
 
     public function testHydrateInvalidToken () : void
     {
-        $hydrator = new Hydrator();
+        $hydrator = $this->createHydrator();
         $command = new StdClass();
         $command->property = 1;
 
         $this->assertFalse($hydrator->hydrate($command, ''));
     }
 
+    public function testHydrateInvalidHash () : void
+    {
+        $hydrator = $this->createHydrator();
+        $command = new StdClass();
+        $command->property = 1;
+
+        $token = substr($hydrator->extract($command), -1);
+
+        $this->assertFalse($hydrator->hydrate($command, $token));
+    }
+
     public function testHydrate () : void
     {
-        $hydrator = new Hydrator();
+        $hydrator = $this->createHydrator();
         $command = new StdClass();
         $command->property = 1;
         $token = $hydrator->extract($command);
@@ -76,4 +87,10 @@ class HydratorTest extends TestCase
         $this->assertEquals('1', $command->property);
     }
 
+    private function createHydrator () : Hydrator
+    {
+        $algos = hash_hmac_algos();
+        $key = 'key';
+        return new Hydrator($algos[0], $key);
+    }
 }

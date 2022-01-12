@@ -24,6 +24,8 @@
 
 namespace HAB\OAI\PMH\Repository\Command;
 
+use InvalidArgumentException;
+
 /**
  * Hydrator default implementation.
  *
@@ -35,19 +37,57 @@ namespace HAB\OAI\PMH\Repository\Command;
 final class Hydrator implements HydratorInterface
 {
     /**
+     * HMAC algorithm.
+     *
+     * @var string
+     */
+    private $algorithm;
+
+    /**
+     * HMAC key.
+     *
+     * @var string
+     */
+    private $key;
+
+    /**
+     * Hash and value delimiter.
+     *
+     * @var string
+     */
+    private $delimiter = ';';
+
+    public function __construct (string $algorithm, string $key)
+    {
+        if (!in_array($algorithm, hash_hmac_algos(), true)) {
+            throw new InvalidArgumentException("Unknown or unsupported hash algorithm: {$algorithm}");
+        }
+        $this->algorithm = $algorithm;
+        $this->key = $key;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function hydrate (object $command, string $token) : bool
     {
-        if ($token === '') {
-            return false;
-        }
-        $token = base64_decode($token, true);
-        if ($token === false) {
+        $data = explode($this->delimiter, $token);
+        if (!is_array($data) || count($data) != 2) {
             return false;
         }
 
-        parse_str($token, $data);
+        list($value, $hash) = $data;
+
+        if (!hash_equals($hash, hash_hmac($this->algorithm, $value, $this->key))) {
+            return false;
+        }
+
+        $value = base64_decode($value, true);
+        if ($value === false) {
+            return false;
+        }
+
+        parse_str($value, $data);
         $properties = get_object_vars($command);
         if (array_diff_key($data, $properties)) {
             return false;
@@ -65,6 +105,8 @@ final class Hydrator implements HydratorInterface
      */
     public function extract (object $command) : string
     {
-        return base64_encode(http_build_query(get_object_vars($command)));
+        $value = base64_encode(http_build_query(get_object_vars($command)));
+        $hash = hash_hmac($this->algorithm, $value, $this->key);
+        return "{$value}{$this->delimiter}{$hash}";
     }
 }
